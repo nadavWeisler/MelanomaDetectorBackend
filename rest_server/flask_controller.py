@@ -46,7 +46,7 @@ def _add_pic():
             os.mkdir(imageFolderPath)
             img.save(f"{imageFolderPath}/image.png")
 
-            prediction = melanomaModel.predict(f"{imageFolderPath}")[0][0] * 100
+            prediction = melanomaModel.predict(f"{imageFolderPath}")[0][1] * 100
             return "{num:.2f}".format(num=prediction), 200
 
     res = "must contain form-data with 'image' variable inside"
