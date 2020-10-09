@@ -26,6 +26,13 @@ melanomaModel: MelanomaPredictor
 @app.route('/', methods=['POST'])
 @cross_origin()
 def _add_pic():
+    """
+        Request need to be of type 'form-data' and have 'image' variable in it.\n
+        'image' contains the base64 image data of an image.\n
+        Saves the image to a random named folder inside of 'image_store' folder.\n
+
+        responses the prediction of the image to contain melanoma in percentage e.g "50%", "100%".\n
+    """
     if request.form and 'image' in request.form:
         imageHeaderData = request.form['image'].split(',')
         if len(imageHeaderData) > 1:
